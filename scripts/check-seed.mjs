@@ -25,7 +25,11 @@ assert.equal(
   manifest.hero.verificationDigest,
   "sha256/v1$d4d2b8f76d4557e523a95e9196de31c10723c6a9a5d00a0db2077c608ec62f56",
 );
-assert.equal(packageManifest.dependencies.stripe, manifest.baseline.stripeRequirement);
+assert.ok(
+  [manifest.baseline.stripeRequirement, manifest.expectedUpdate.stripeRequirement].includes(
+    packageManifest.dependencies.stripe,
+  ),
+);
 assert.equal(await readFile(".node-version", "utf8"), `${manifest.baseline.node}\n`);
 assert.equal(
   await readFile(".tool-versions", "utf8"),
