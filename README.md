@@ -3,9 +3,10 @@
 Metric Harbor is a deliberately small TypeScript SaaS fixture for the Pramaan/Product Loop
 `provider.update` demo. It reads Stripe Checkout conversion data in billing and analytics, observes
 an unrelated PaymentIntent status, prepares dashboard email through a Resend-shaped seam, and
-builds Better Auth options through an injected factory. Tests use inert SDK-shaped doubles. They
-run with Node's network permission disabled, so the repository cannot contact Stripe, Resend,
-Better Auth infrastructure, GitHub, or any other external system during verification.
+builds Better Auth options through an injected callable matching `betterAuth(options)`. Tests use
+inert SDK-shaped doubles. The application test subprocess runs with Node's network permission
+disabled, so those tests cannot contact Stripe, Resend, Better Auth infrastructure, GitHub, or any
+other external system.
 
 The payment module reports provider status with `completionClaimed: false`. The email module never
 claims delivery. There are no credentials, provider objects from real accounts, or customer data in
@@ -74,7 +75,7 @@ does not claim an automatic application-source codemod.
 `src/payments/observe-payment-status.ts` is a real but unaffected Stripe type usage and must remain
 untouched. The Resend and Better Auth modules are dashboard breadth only and must not be pulled into
 the Stripe change. Exact affected, manual-verification, and untouched path sets are frozen in
-`seed-manifest.json` and checked by `pnpm seed:check`.
+`seed-manifest.json` and checked as part of `pnpm test`.
 
 ## Publication boundary
 

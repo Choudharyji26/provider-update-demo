@@ -7,7 +7,7 @@ import { betterAuthDouble } from "./support/better-auth.ts";
 test("dashboard auth configures local credentials and short cookie caching through a double", () => {
   const auth = betterAuthDouble();
 
-  const runtime = createDashboardAuth(auth.factory);
+  const runtime = createDashboardAuth(auth.initialize);
 
   assert.deepEqual(runtime, { kind: "better-auth-double" });
   assert.deepEqual(auth.configurations, [

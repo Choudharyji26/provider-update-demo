@@ -1,11 +1,9 @@
 import type { BetterAuthOptions } from "better-auth";
 
-export interface DashboardAuthFactory<Runtime> {
-  create(options: BetterAuthOptions): Runtime;
-}
+export type BetterAuthInitializer<Runtime> = (options: BetterAuthOptions) => Runtime;
 
-export function createDashboardAuth<Runtime>(factory: DashboardAuthFactory<Runtime>): Runtime {
-  return factory.create({
+export function createDashboardAuth<Runtime>(betterAuth: BetterAuthInitializer<Runtime>): Runtime {
+  return betterAuth({
     appName: "Metric Harbor",
     baseURL: "https://dashboard.example.invalid",
     emailAndPassword: { enabled: true },

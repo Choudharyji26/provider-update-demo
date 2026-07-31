@@ -5,7 +5,8 @@ ruleset, installation, branch, or pull request.
 
 ## Protected `main`
 
-- Require pull requests and the `pnpm verify` check before changes reach `main`.
+- Require pull requests and a `provider-update-demo / pnpm test` status check before changes reach
+  `main`.
 - Block force pushes and branch deletion.
 - Do not grant the demo GitHub App a bypass.
 - Keep direct pushes disabled for the App; the provider-update flow targets a new branch.

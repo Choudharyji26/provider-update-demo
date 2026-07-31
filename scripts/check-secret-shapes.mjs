@@ -14,8 +14,13 @@ const patterns = [
   ),
   new RegExp(`${["x", "o", "x", "b"].join("")}-[A-Za-z0-9-]{12,}`, "u"),
   new RegExp(`${["r", "e"].join("")}_[A-Za-z0-9]{20,}`, "u"),
+  new RegExp(`${["A", "K", "I", "A"].join("")}[A-Z0-9]{16}`, "u"),
+  new RegExp(`${["A", "S", "I", "A"].join("")}[A-Z0-9]{16}`, "u"),
+  new RegExp(`${["n", "p", "m"].join("")}_[A-Za-z0-9]{36}`, "u"),
+  new RegExp(`${["g", "l", "p", "a", "t"].join("")}-[A-Za-z0-9_-]{20,}`, "u"),
+  new RegExp(`\\b${["Y", "O", "U", "R"].join("")}_(?:API_KEY|TOKEN|SECRET|PASSWORD)\\b`, "u"),
   new RegExp(
-    `${["B", "E", "G", "I", "N"].join("")} (?:RSA )?${["P", "R", "I", "V", "A", "T", "E"].join("")} ${["K", "E", "Y"].join("")}`,
+    `${["B", "E", "G", "I", "N"].join("")} (?:RSA |EC |OPENSSH )?${["P", "R", "I", "V", "A", "T", "E"].join("")} ${["K", "E", "Y"].join("")}`,
     "u",
   ),
 ];
@@ -47,4 +52,6 @@ for (const file of repositoryFiles) {
   }
 }
 
-process.stdout.write(`No secret-shaped values found in ${repositoryFiles.length} files.\n`);
+process.stdout.write(
+  `No configured credential prefixes, private-key blocks, or obvious secret placeholders found in ${repositoryFiles.length} files.\n`,
+);

@@ -25,7 +25,14 @@
     "lockedStripeVersion": "20.4.1",
     "node": "24.18.0",
     "packageManager": "pnpm@11.15.1",
-    "verificationCommand": "pnpm test"
+    "verificationCommand": "pnpm test",
+    "testPaths": [
+      "tests/analytics-rate.test.ts",
+      "tests/billing-rate.test.ts",
+      "tests/dashboard-auth.test.ts",
+      "tests/dashboard-invite.test.ts",
+      "tests/payment-status.test.ts"
+    ]
   },
   "expectedUpdate": {
     "stripeRequirement": ">=21.0.1 <22.0.0",
@@ -44,7 +51,14 @@
       "src/auth/dashboard-auth.ts",
       "src/notifications/send-dashboard-invite.ts",
       "src/payments/observe-payment-status.ts"
-    ]
+    ],
+    "applicationSourceSha256": {
+      "src/analytics/checkout-conversion-rate.ts": "8baaae92ade94e71e8b5acb75da2a4222ab46f6955a2c9b78ff4cd9f8565ac7d",
+      "src/auth/dashboard-auth.ts": "0b8194dff0b8a78ed8fda5d292495b0cd57eaa742f3297b63f036eb80a9fe990",
+      "src/billing/checkout-settlement-rate.ts": "e0c953f9fa841baf05f52d76a458cd5418c6af46befb360ea5c36157d3c73090",
+      "src/notifications/send-dashboard-invite.ts": "942758b5273c9e8ddbfb4108a9ce1ed4d6daac95d6f48e21d8fc28f762644e40",
+      "src/payments/observe-payment-status.ts": "ba29054c1155beb4ae245e7d24fe890e27f7fe61102c5801a5af42de9edf6a4c"
+    }
   },
   "identityResolution": {
     "baseCommitCommand": "git rev-parse refs/heads/main",

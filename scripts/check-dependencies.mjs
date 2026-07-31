@@ -11,6 +11,13 @@ const list = JSON.parse(
 );
 
 assert.equal(process.version, "v24.18.0");
+assert.equal(
+  execFileSync("pnpm", ["--version"], {
+    encoding: "utf8",
+    env: process.env,
+  }).trim(),
+  "11.15.1",
+);
 assert.deepEqual(Object.keys(manifest).sort(), [
   "dependencies",
   "name",

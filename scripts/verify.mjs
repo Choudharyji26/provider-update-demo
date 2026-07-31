@@ -1,10 +1,12 @@
 import { execFileSync } from "node:child_process";
-import { readdir } from "node:fs/promises";
 
-const testFiles = (await readdir("tests"))
-  .filter((file) => file.endsWith(".test.ts"))
-  .sort()
-  .map((file) => `tests/${file}`);
+const testFiles = [
+  "tests/analytics-rate.test.ts",
+  "tests/billing-rate.test.ts",
+  "tests/dashboard-auth.test.ts",
+  "tests/dashboard-invite.test.ts",
+  "tests/payment-status.test.ts",
+];
 
 const commands = [
   ["pnpm", ["exec", "biome", "format", "."]],
