@@ -1,0 +1,17 @@
+{
+  "name": "provider-update-demo",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@biomejs/biome": "2.5.4",
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.17",
+    "better-auth": "1.6.23",
+    "resend": "6.17.0",
+    "stripe": "^20.3.0",
+    "typescript": "6.0.3"
+  },
+  "scripts": {
+    "test": "node scripts/verify.mjs"
+  }
+}

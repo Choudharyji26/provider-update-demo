@@ -1,0 +1,54 @@
+{
+  "schema": "pramaan/provider-update-demo-seed/v1",
+  "repository": {
+    "owner": "Pramaan-Dev",
+    "name": "provider-update-demo",
+    "remote": "https://github.com/Pramaan-Dev/provider-update-demo.git",
+    "baseRef": "main",
+    "headPattern": "product-loop/live-demo-*"
+  },
+  "referenceCommits": {
+    "pramaan": "5c6f36c6f187f11b4914fba5def66af1abb743a2",
+    "productLoop": "5ba1bc7ad7b24819eddb50160a11c8ca6a73c8e9"
+  },
+  "hero": {
+    "provider": "stripe",
+    "change": "stripe-node.decimal-string-v21",
+    "capability": "provider.update",
+    "environment": "sandbox",
+    "bundleDigest": "sha256/v1$42814155a4a9dc18e2c8cec0f6de941c21de9cc90c88cd73a3c88792c1d2e5c6",
+    "verificationProfile": "provider-update-alpha-stripe-v1",
+    "verificationDigest": "sha256/v1$d4d2b8f76d4557e523a95e9196de31c10723c6a9a5d00a0db2077c608ec62f56"
+  },
+  "baseline": {
+    "stripeRequirement": "^20.3.0",
+    "lockedStripeVersion": "20.4.1",
+    "node": "24.18.0",
+    "packageManager": "pnpm@11.15.1",
+    "verificationCommand": "pnpm test"
+  },
+  "expectedUpdate": {
+    "stripeRequirement": ">=21.0.1 <22.0.0",
+    "affectedPaths": [
+      "src/analytics/checkout-conversion-rate.ts",
+      "src/billing/checkout-settlement-rate.ts"
+    ],
+    "automaticPatchPaths": ["package.json"],
+    "manualVerificationPaths": [
+      "pnpm-lock.yaml",
+      "tests/analytics-rate.test.ts",
+      "tests/billing-rate.test.ts",
+      "tests/support/stripe.ts"
+    ],
+    "untouchedPaths": [
+      "src/auth/dashboard-auth.ts",
+      "src/notifications/send-dashboard-invite.ts",
+      "src/payments/observe-payment-status.ts"
+    ]
+  },
+  "identityResolution": {
+    "baseCommitCommand": "git rev-parse refs/heads/main",
+    "treeCommand": "git rev-parse refs/heads/main^{tree}",
+    "note": "Commit and tree identities are reported after this self-containing manifest is committed."
+  }
+}
