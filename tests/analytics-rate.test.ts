@@ -7,5 +7,5 @@ import { checkoutSessionDouble } from "./support/stripe.ts";
 test("analytics reads the checkout conversion rate from the observed response", () => {
   const session = checkoutSessionDouble("0.9243");
 
-  assert.equal(analyticsConversionRate(session), "0.9243");
+  assert.equal(analyticsConversionRate(session)?.toString(), "0.9243");
 });
